@@ -1,0 +1,24 @@
+version: '3'
+services:
+  node_app:
+    image: eskacmtelegram
+    container_name: eskacmtelegram
+    restart: on-failure
+    networks:
+      - my_network
+
+  nginx:
+    image: nginx:latest
+    container_name: my_nginx
+    ports:
+      - "8443:443"
+    volumes:
+      - /path/to/your/nginx/config:/etc/nginx/conf.d
+      - /path/to/your/ssl/certificates:/etc/nginx/ssl
+    networks:
+      - my_network
+    depends_on:
+      - node_app
+
+networks:
+  my_network:
