@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import { Chat, Prisma } from '@prisma/client';
+import { Prisma } from '@prisma/client';
 
 @Injectable()
 export class AppService {
-  async createMessage(data: Prisma.ChatCreateInput) {
+  async createMessage() {
     // return await this.prisma.chat.create({ data });
   }
 
