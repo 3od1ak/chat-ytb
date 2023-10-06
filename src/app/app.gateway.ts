@@ -19,12 +19,9 @@ export class AppGateway
   @WebSocketServer() server: Server;
 
   @SubscribeMessage('sendMessage')
-  async handleSendMessage(
-    client: Socket,
-    payload: Prisma.ChatCreateInput,
-  ): Promise<void> {
-    await this.appService.createMessage(payload);
-    this.server.emit('recMessage', payload);
+  async handleSendMessage(): Promise<void> {
+    await this.appService.createMessage();
+    // this.server.emit('recMessage', payload);
   }
 
   afterInit(server: any) {
