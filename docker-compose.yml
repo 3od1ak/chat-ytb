@@ -11,7 +11,7 @@ services:
     image: nginx:latest
     container_name: my_nginx
     ports:
-      - "8443:443"
+      - '8443:443'
     volumes:
       - /path/to/your/nginx/config:/etc/nginx/conf.d
       - /path/to/your/ssl/certificates:/etc/nginx/ssl
@@ -19,6 +19,12 @@ services:
       - my_network
     depends_on:
       - node_app
+
+  redis:
+    image: redis:latest
+    container_name: my_redis
+    networks:
+      - my_network
 
 networks:
   my_network:
